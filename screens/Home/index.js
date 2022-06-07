@@ -11,7 +11,7 @@ import Header from "../../components/Header/Header";
 import MenuFilters from "../../components/MenuFilters/MenuFilters";
 import PopularItems from "../../components/PopularItems/PopularItems";
 
-const Home = () => {
+const Home = ({navigation}) => {
 
 
     return (
@@ -20,7 +20,7 @@ const Home = () => {
             <ScrollView>
                 <MenuFilters/>
 
-                <PopularItems/>
+                <PopularItems navigation={navigation}/>
             </ScrollView>
         </SafeAreaView>
         
@@ -29,7 +29,8 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     body: {
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        paddingBottom: 50
     },
     text: {
         fontFamily: 'Dosis',
