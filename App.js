@@ -5,7 +5,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import Home from './screens/Home';
 import Product from './screens/Product';
-
+import Cart from './screens/Cart';
 
 const HomeStack = createStackNavigator({
   Home: {
@@ -19,6 +19,12 @@ const HomeStack = createStackNavigator({
     navigationOptions: {
       headerShown: false,
     },
+  },
+  Cart: {
+    screen: Cart,
+    navigationOptions: {
+      headerShown: false,
+    }
   }
 })
 

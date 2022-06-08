@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import {
     Text, 
     SafeAreaView,
     StyleSheet,
-    ScrollView
+    ScrollView,
 } from 'react-native'
 
 import Header from "../../components/Header/Header";
@@ -13,13 +13,32 @@ import PopularItems from "../../components/PopularItems/PopularItems";
 
 const Home = ({navigation}) => {
 
+    const [headerBg, setHeaderBg] = useState('#fff');
+    const [positionY, setPositionY] = useState(0);
+
+        const handleScroll = (e) => {
+            setPositionY(e.nativeEvent.contentOffset.y);
+
+            if (positionY < 50) {
+                setHeaderBg('#fff')
+            } else {
+                setHeaderBg('#dba751')
+            }
+        };
+
+
+
 
     return (
         <SafeAreaView style={styles.body}>
-            <Header/>
-            <ScrollView>
+            <Header headerBg={headerBg}/>
+            <ScrollView 
+                onScroll={(e) => handleScroll(e)}
+                onMomentumScrollEnd={(e) => handleScroll(e)}
+                onMomentumScrollBegin={(e) => handleScroll(e)}
+                scrollEventThrottle={1}>
                 <MenuFilters/>
-
+                <Text>Y:{positionY}</Text>
                 <PopularItems navigation={navigation}/>
             </ScrollView>
         </SafeAreaView>

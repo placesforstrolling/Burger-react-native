@@ -16,7 +16,7 @@ const Product = ({navigation}) => {
     return (
         <SafeAreaView style={styles.body}>
             <ProductHeader navigation={navigation}/>
-            <ProductDesc/>
+            <ProductDesc navigation={navigation}/>
         </SafeAreaView>
     );
 }

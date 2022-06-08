@@ -11,10 +11,11 @@ import {
   SafeAreaView
 } from 'react-native';
 
-const Header = ({navigation}) => {
+const Header = ({headerBg}) => {
+  
     return (
 
-          <View style={styles.header}>
+          <View style={[styles.header, {backgroundColor: headerBg}]}>
             <View>
               <Text>
                 <Icon name="navicon" style={styles.headerIcon}/>;
