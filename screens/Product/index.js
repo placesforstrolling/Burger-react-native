@@ -1,14 +1,30 @@
 import React from "react";
 
-import {Text} from 'react-native'
+import {
+    Text,
+    SafeAreaView,
+    StyleSheet
+} from 'react-native';
+import {  } from "react-navigation";
+import ProductDesc from "../../components/ProductDesc/ProductDesc";
 
-const Product = () => {
+import ProductHeader from "../../components/ProductHeader/ProductHeader";
+
+const Product = ({navigation}) => {
 
 
     return (
-
-        <Text>Product</Text>
+        <SafeAreaView style={styles.body}>
+            <ProductHeader navigation={navigation}/>
+            <ProductDesc/>
+        </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    body: {
+        backgroundColor: '#fff',
+    }
+});
 
 export default Product;

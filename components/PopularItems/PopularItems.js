@@ -16,7 +16,7 @@ const PopularItems = ({navigation}) => {
         <View style={styles.popular}>
             <View style={styles.popularTitleWrapper}>
                 <Text style={styles.popularTitle}>Popular</Text>
-                <Icon name="filter" style={styles.popularIcon}/>
+                <Icon name="sliders-h" style={styles.popularIcon}/>
             </View>
 
             <PopularItemCard 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     popularIcon: {
         color: '#636766',
         alignSelf: 'center',
-        fontSize: 14
+        fontSize: 16
     },
     popularTitle: {
         fontSize: 18,
