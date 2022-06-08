@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
@@ -18,13 +18,15 @@ const ProductDesc = ({navigation}) => {
     function counter(sign) {
         if (sign === '+') {
             setCount(count + 1);
-            setPrice(count * 13.99);
 
         } else if (sign === '-' && count > 1) {
             setCount(count - 1);
-            setPrice(count * 13.99);
         }
     };
+
+    useEffect(() => {
+        setPrice(count * 13.99);
+    }, [count])
 
     return (
         <View style={styles.productDesc}>

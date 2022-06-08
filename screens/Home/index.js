@@ -38,7 +38,6 @@ const Home = ({navigation}) => {
                 onMomentumScrollBegin={(e) => handleScroll(e)}
                 scrollEventThrottle={1}>
                 <MenuFilters/>
-                <Text>Y:{positionY}</Text>
                 <PopularItems navigation={navigation}/>
             </ScrollView>
         </SafeAreaView>

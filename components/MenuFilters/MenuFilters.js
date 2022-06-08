@@ -1,85 +1,71 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import {
     StyleSheet,
     View,
     Text,
-    ScrollView
+    ScrollView,
   } from 'react-native';
 
+import SingleFilter from './SingleFilter';
+
+  const filters = [
+    {
+        index: 0,
+        icon: 'hamburger',
+        text: 'Hamburger'
+    },
+    {
+        index: 1,
+        icon: 'pizza-slice',
+        text: 'Pizza'
+    },
+    {
+        index: 2,
+        icon: 'mortar-pestle',
+        text: 'Noodles'
+    },
+    {
+        index: 3,
+        icon: 'piggy-bank',
+        text: 'Steaks'
+    },
+    {
+        index: 4,
+        icon: 'carrot',
+        text: 'Healthy'
+    },
+   
+];
+
 const MenuFilters = () => {
+
+    const [activeFilter, setActiveFilter] = useState(0);
+
+    function onSelectFilter (index) {
+        setActiveFilter(index);
+    }
 
     return (
         <View style={styles.filters}>
             <Text style={styles.filtersTitle}>Food Menu</Text>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.filterWrapper}>
-                <View style={styles.filterItem}>
-                    <View style={styles.filterItemBox}>
-                        <Text>
-                            <Icon name="hamburger" style={styles.filterIcon}/>
-                        </Text>
-                    </View>
-                    <Text style={styles.filterTitle}>Burgers</Text>
-                </View>
-                <View style={styles.filterItem}>
-                    <View style={styles.filterItemBox}>
-                        <Text>
-                            <Icon name="pizza-slice" style={styles.filterIcon}/>
-                        </Text>
-                    </View>
-                    <Text style={styles.filterTitle}>Pizza</Text>
-                </View>
-                <View style={styles.filterItem}>
-                    <View style={styles.filterItemBox}>
-                        <Text>
-                            <Icon name="mortar-pestle" style={styles.filterIcon}/>
-                        </Text>
-                    </View>
-                    <Text style={styles.filterTitle}>Noodles</Text>
-                </View>
-                <View style={styles.filterItem}>
-                    <View style={styles.filterItemBox}>
-                        <Text>
-                            <Icon name="piggy-bank" style={styles.filterIcon}/>
-                        </Text>
-                    </View>
-                    <Text style={styles.filterTitle}>Steaks</Text>
-                </View>
-                <View style={styles.filterItem}>
-                    <View style={styles.filterItemBox}>
-                        <Text>
-                            <Icon name="carrot" style={styles.filterIcon}/>
-                        </Text>
-                    </View>
-                    <Text style={styles.filterTitle}>Healthy</Text>
-                </View>
+                {filters.map((item, i) => (
+                    <SingleFilter
+                        key={i}
+                        icon={item.icon} 
+                        text={item.text}
+                        active={activeFilter}
+                        index={i}
+                        onSelectFilter={onSelectFilter}/>
+                ))}
             </ScrollView>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    filterTitle: {
-        textAlign: 'center'
-    },
-    filterIcon: {
-        fontSize: 26,
-        color: '#595d5c'
-    },
-    filterItemBox: {
-        height: 60,
-        width: 60,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f6f6f6',
-        borderRadius: 20,
-        marginBottom: 5
-    },
-    filterItem: {
-        justifyContent: 'center',
-        marginRight: 15
-    },
     filterWrapper: {
         marginTop: 20,
     },
